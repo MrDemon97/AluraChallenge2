@@ -1,4 +1,3 @@
-package com.alura.challenge;
 import com.google.gson.Gson;
 
 public class Principal {
