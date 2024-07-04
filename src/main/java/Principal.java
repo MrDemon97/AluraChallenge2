@@ -185,27 +185,41 @@ public class Principal {
 
         //Solicitamos moneda de origen al usuario
         System.out.println("Ingrese el codigo de la moneda de principal: ");
-        String codigoOrigen = scanner.nextLine().toUpperCase();
-        while (!codigosNombresMonedas.containsKey(codigoOrigen)) {
+        String monedaOrigen = scanner.nextLine().toUpperCase();
+        while (!codigosNombresMonedas.containsKey(monedaOrigen)) {
             System.out.println("Codigo de moneda no valido, ingrese nuevamente: ");
-            codigoOrigen = scanner.nextLine().toUpperCase();
+            monedaOrigen = scanner.nextLine().toUpperCase();
         }
 
         //Solicitamos la cantidad de la moneda de origen
-        System.out.println("Ingrese la cantidad en " + codigosNombresMonedas.get(codigoOrigen) + ": ");
+        System.out.println("Ingrese la cantidad en " + codigosNombresMonedas.get(monedaOrigen) + ": ");
         double cantidadOrigen = Double.parseDouble(scanner.nextLine());
 
         //Solicitamos la moneda a la que deseamos hacer la converison
 
         System.out.println("Ingrese el codigo de la moneda a la que desea convertir: ");
-        String codigoDestino = scanner.nextLine().toUpperCase();
-        while (!codigosNombresMonedas.containsKey(codigoDestino)){
+        String monedaDestino = scanner.nextLine().toUpperCase();
+        while (!codigosNombresMonedas.containsKey(monedaDestino)){
             System.out.println("Codigo de moneda no valido. Ingrese nuevamente: ");
-            codigoDestino = scanner.nextLine().toUpperCase();
+            monedaDestino = scanner.nextLine().toUpperCase();
         }
 
         //Realizamos la converison usando conversor de moenda
-        C
+        ConversorDeMoneda conversor = new ConversorDeMoneda();
+        double resultado = conversor.convertirMoneda(cantidadOrigen, monedaOrigen, monedaDestino);
+
+        //Mostramos el resultado al usuario
+
+        if (resultado != -1) {
+            System.out.println(cantidadOrigen + " " + codigosNombresMonedas.get(monedaOrigen) + " equivale a " + resultado + " "
+                    + codigosNombresMonedas.get(monedaDestino));
+        }else{
+            System.out.println("No se pudo realizar la conversion.");
+        }
+
+        scanner.close();
+
+
 
 
 
